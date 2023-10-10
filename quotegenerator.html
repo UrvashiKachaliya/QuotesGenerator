@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: blueviolet;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mx-auto" style="width:30rem; margin-top: 15%;">
+
+                <div class="card" style="height: 200px;">
+                    <div class="card-body">
+                        <h4 class=" text-primary">Quote Of The Day</h4>
+                        <div class="quotes mb-3">
+                            <p id="quotes-text">
+                                Loading..
+                            </p>
+
+                        </div>
+
+                        <div class="div d-flex">
+
+                            <div class="icon">
+                                <button class="btn border border-0" onclick="openTwitter()"><i
+                                        class="bi bi-twitter text-primary p-2  fs-5 border border-1 border-primary rounded-circle"></i></button>
+                                <button class="btn border border-0" onclick="copy()"><i
+                                        class="bi bi-copy text-primary p-2 fs-5 border border-1 border-primary rounded-circle"></i></button>
+                                <button class="btn border border-0" onclick="listenQuote()"> <i
+                                        class="bi bi-volume-up text-primary p-2 fs-5 border border-1 border-primary rounded-circle"></i></button>
+                            </div>
+
+                                <button class="btn btn-primary rounded-5 ms-auto me-3" onclick="newQuotes()">New Quote</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var quotes = ["“Don’t let yesterday take up too much of today.” ~~~  Will Rogers",
+            "“Everything has beauty, but not everyone sees it.” ~ Confucius",
+            "“If I cannot do great things, I can do small things in a great way.” ~ Martin Luther King Jr.",
+            "“Simplicity is the ultimate sophistication.” ~ Leonardo da Vinci",
+            "“No matter what people tell you, words and ideas can change the world.” ~ Robin Williams",
+            "“Time moves in one direction, memory in another.” ~ William Gibson",
+            "“Life is like riding a bicycle. To keep your balance, you must keep moving.” ~ Albert Einstein",
+            "“To improve is to change; to be perfect is to change often.” ~ Winston Churchill",
+            "Daksha"
+        ];
+
+        function newQuotes() {
+            var randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+            var quoteText = document.getElementById("quotes-text");
+            quoteText.textContent = quotes[randomQuoteIndex];
+
+        }
+
+        function copy() {
+            var quoteText = document.getElementById("quotes-text").textContent;
+            navigator.clipboard.writeText(quoteText);
+            alert("Quotes Copied");
+        }
+
+        function openTwitter() {
+            var quoteText = document.getElementById("quotes-text").textContent;
+            var twitterURL = `https://twitter.com/intent/tweet?text=Check%20out%20this%20quote:%20 ${quoteText}`;
+            window.open(twitterURL);
+        }
+        function listenQuote() {
+            var quoteText = document.getElementById("quotes-text").textContent;
+            var speechSynthesis = window.speechSynthesis;
+            var speechUtterance = new SpeechSynthesisUtterance(quoteText);
+            speechSynthesis.speak(speechUtterance);
+        }
+        window.onload = function () {
+            newQuotes();
+        };
+
+    </script>
+
+
+</body>
+
+</html>

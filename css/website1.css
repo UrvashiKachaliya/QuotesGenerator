@@ -1,0 +1,18 @@
+body{
+    overflow-x: hidden;
+}
+/* nav{
+    margin-left: 50px;
+} */
+.row1 .col-12 img{
+    width:900px;
+
+}
+.row .col-4 img{
+    width:300px;
+    height:300px;
+}
+.col-6 img{
+    width:500px;
+    height:350px;
+}
